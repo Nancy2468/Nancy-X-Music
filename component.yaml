@@ -3,7 +3,7 @@ component:
   type: service
   source:
     type: git
-    repository: https://github.com/Nancy2468/Nancy-X-Vibes.git  
+    repository: https://github.com/Nancy2468/Nancy-X-Music.git  
     branch: main  
   build:
     language: python
