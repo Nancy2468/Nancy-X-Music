@@ -1,6 +1,18 @@
 import schedule
 import time
 from telegram import Bot
+from config import load_config
+
+# Load the configuration data
+config_data = load_config()
+
+# Example: Using the API key or any other config value for a scheduled task
+api_key = config_data.get('api_key')
+
+# Example of using the API key in a scheduled task
+def scheduled_task():
+    print(f"Running scheduled task with API Key: {api_key}")
+    # Add your scheduled task logic here
 
 class Scheduler:
     def __init__(self, bot_token):
