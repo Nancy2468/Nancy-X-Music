@@ -5,6 +5,27 @@ from sqlalchemy import create_engine
 # Load the configuration data
 config_data = load_config()
 
+def add_music_group(chat_id):
+    conn = sqlite3.connect("bot_database.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT OR IGNORE INTO music_groups (chat_id) VALUES (?)", (chat_id,))
+    conn.commit()
+    conn.close()
+
+def remove_music_group(chat_id):
+    conn = sqlite3.connect("bot_database.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM music_groups WHERE chat_id = ?", (chat_id,))
+    conn.commit()
+    conn.close()
+
+def get_music_groups():
+    conn = sqlite3.connect("bot_database.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT chat_id FROM music_groups")
+    groups = [str(row[0]) for row in cursor.fetchall()]
+    conn.close()
+    return groups
 def add_admin(user_id):
     conn = sqlite3.connect("bot.db")
     cursor = conn.cursor()
