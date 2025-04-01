@@ -95,13 +95,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-This is the bot.py file, which is the main entry point for your Telegram bot. It:
-✔ Starts the bot and loads handlers
-✔ Manages all user & admin commands
-✔ Handles queue, playlists, and downloads
-✔ Schedules Good Morning/Night messages
-✔ Handles errors and logs issues
-
-Next, I'll send the queue_manager.py file! 🚀
-
