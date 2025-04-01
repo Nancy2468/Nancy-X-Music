@@ -2,8 +2,20 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext
 from database import Database
 import random
+from config import load_config
 
 db = Database()
+
+# Load the configuration data
+config_data = load_config()
+
+# Access the necessary value
+database_url = config_data.get('database_url')
+
+# Example usage: using the database_url in a handler
+print(f"Connecting to database at: {database_url}")
+
+# You can use the database_url in any handler that interacts with the database
 
 def start(update: Update, context: CallbackContext):
     chat_type = update.message.chat.type
