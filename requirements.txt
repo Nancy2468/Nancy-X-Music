@@ -1,6 +1,5 @@
 git+https://github.com/python-telegram-bot/python-telegram-bot.git
 git+https://github.com/dbader/schedule.git
-git+https://github.com/sqlite/sqlite.git
 git+https://github.com/pytgcalls/ntgcalls.git
 git+https://github.com/pytube/pytube.git
 git+https://github.com/googleapis/google-auth-library-python.git
