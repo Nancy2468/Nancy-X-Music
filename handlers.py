@@ -79,17 +79,25 @@ def handle_button(update: Update, context: CallbackContext):
 def add_playlist(update: Update, context: CallbackContext):
     chat_id = update.message.chat.id
     user_id = update.message.from_user.id
+
+    # Check if user is admin
     if not db.is_admin(chat_id, user_id):
-        update.message.reply_text("Only admins can add playlists.")
+        update.message.reply_text("❌ Only admins can add playlists.")
         return
     
-    playlist_name = " ".join(context.args)
-    if not playlist_name:
-        update.message.reply_text("Please provide a playlist name.")
+    # Get playlist name
+    if not context.args:
+        update.message.reply_text("⚠️ Please provide a playlist name. Usage: /addplaylist <playlist_name>")
         return
     
-    db.add_playlist(chat_id, playlist_name)
-    update.message.reply_text(f"Playlist '{playlist_name}' added successfully.")
+    playlist_name = " ".join(context.args).strip()
+
+    # Add playlist to database
+    try:
+        db.add_playlist(chat_id, playlist_name)
+        update.message.reply_text(f"✅ Playlist '{playlist_name}' added successfully!")
+    except Exception as e:
+        update.message.reply_text(f"⚠️ Error: {str(e)}")
 
 def remove_playlist(update: Update, context: CallbackContext):
     chat_id = update.message.chat.id
