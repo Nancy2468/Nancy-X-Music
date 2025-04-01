@@ -12,6 +12,8 @@ from config import TOKEN  # Bot token from config file
 from config import load_config
 from member import is_admin, tag_all, welcome_message, leave_message
 from pyrogram import Client
+from handlers import new_chat_member, left_chat_member
+
 # Logging setup
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -80,6 +82,8 @@ def main():
     
     # Error Handling
     dp.add_error_handler(error)
+    dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_chat_member))
+    dp.add_handler(MessageHandler(Filters.status_update.left_chat_member, left_chat_member))
 
     # Schedule automatic messages
     schedule_messages(updater)
