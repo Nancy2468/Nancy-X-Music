@@ -5,6 +5,21 @@ from sqlalchemy import create_engine
 # Load the configuration data
 config_data = load_config()
 
+def add_admin(user_id):
+    conn = sqlite3.connect("bot.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO admins (user_id) VALUES (?)", (user_id,))
+    conn.commit()
+    conn.close()
+
+def is_admin_db(user_id):
+    conn = sqlite3.connect("bot.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT user_id FROM admins WHERE user_id=?", (user_id,))
+    result = cursor.fetchone()
+    conn.close()
+    return result is not None
+
 # Access the database_url
 database_url = config_data.get('database_url')
 
@@ -16,6 +31,7 @@ def connect_to_database():
         result = connection.execute("SELECT * FROM your_table")
         for row in result:
             print(row)
+            
 
 
 
