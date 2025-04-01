@@ -77,3 +77,16 @@ class Database:
     def is_admin(self, chat_id, user_id):
         self.cursor.execute("SELECT 1 FROM admins WHERE chat_id = ? AND user_id = ?", (chat_id, user_id))
         return self.cursor.fetchone() is not None
+
+    def add_song_to_drive(group_id, playlist_name, song_path, song_name):
+    # Upload to Google Drive
+    file_drive = drive.CreateFile({"title": song_name})
+    file_drive.SetContentFile(song_path)
+    file_drive.Upload()
+    file_url = f"https://drive.google.com/file/d/{file_drive['id']}/view"
+
+    # Store in database
+    cursor.execute("INSERT INTO songs (playlist_id, song_name, song_url) VALUES ((SELECT id FROM playlists WHERE group_id = ? AND name = ?), ?, ?)",
+                   (group_id, playlist_name, song_name, file_url))
+    conn.commit()
+    return file_url
