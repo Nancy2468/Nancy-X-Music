@@ -1,13 +1,13 @@
-python-telegram-bot==13.15 
-schedule 
-sqlite3 
-ntgcalls requests 
-pytube 
-google-auth 
-google-auth-oauthlib 
-google-auth-httplib2 
+python-telegram-bot==13.15
+schedule
+sqlite3
+ntgcalls
+pytube
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
 googleapiclient
 pyrogram
-pydrive2 
-python-dotenv 
+pydrive2
+python-dotenv
 asyncio
