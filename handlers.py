@@ -3,8 +3,20 @@ from telegram.ext import CallbackContext
 from database import Database
 import random
 from config import load_config
-
+from database import add_music_group, remove_music_group
 db = Database()
+
+def new_chat_member(update, context):
+    for member in update.message.new_chat_members:
+        if member.id == context.bot.id:  # If the bot itself is added
+            chat_id = str(update.message.chat.id)
+            add_music_group(chat_id)
+            update.message.reply_text("🎶 Thank you for adding me! Use /play to start music!")
+
+def left_chat_member(update, context):
+    if update.message.left_chat_member.id == context.bot.id:  # If bot is removed
+        chat_id = str(update.message.chat.id)
+        remove_music_group(chat_id)
 
 # Load the configuration data
 config_data = load_config()
