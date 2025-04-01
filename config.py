@@ -1,5 +1,7 @@
 import os
 from dotenv import load_dotenv
+from pydrive2.auth import GoogleAuth
+from pydrive2.drive import GoogleDrive
 
 load_dotenv()
 
@@ -13,6 +15,9 @@ DATABASE_URL = os.getenv("DATABASE_URL", "database.sqlite")
 
 # Google Drive Configuration
 GDRIVE_FOLDER_ID = os.getenv("GDRIVE_FOLDER_ID", "")  # Folder ID for storing playlists and songs
+gauth = GoogleAuth()
+gauth.LocalWebserverAuth()
+drive = GoogleDrive(gauth)
 
 # Bot Settings
 OWNER_ID = int(os.getenv("OWNER_ID", ""))  # Your Telegram user ID
