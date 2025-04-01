@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
+import json
 
 load_dotenv()
 
@@ -30,3 +31,13 @@ INLINE_BUTTON_LIFETIME = 300  # Inline buttons disappear after 5 minutes
 # Scheduled Messages
 GOOD_MORNING_TIME = "07:00"  # 7 AM
 GOOD_NIGHT_TIME = "22:00"  # 10 PM
+
+# Function to load the configuration data from the config.json file
+def load_config():
+    json_file_path = 'config.json'  # Path to your JSON file
+    if os.path.exists(json_file_path):
+        with open(json_file_path, 'r') as f:
+            config_data = json.load(f)
+        return config_data
+    else:
+        raise FileNotFoundError(f"The file {json_file_path} does not exist.")
