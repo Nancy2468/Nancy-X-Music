@@ -1,4 +1,23 @@
 import sqlite3
+from config import load_config
+from sqlalchemy import create_engine
+
+# Load the configuration data
+config_data = load_config()
+
+# Access the database_url
+database_url = config_data.get('database_url')
+
+# Use the database_url to create a connection to the database
+def connect_to_database():
+    engine = create_engine(database_url)
+    with engine.connect() as connection:
+        # Perform database operations
+        result = connection.execute("SELECT * FROM your_table")
+        for row in result:
+            print(row)
+
+
 
 class Database:
     def __init__(self, db_name="music_bot.db"):
