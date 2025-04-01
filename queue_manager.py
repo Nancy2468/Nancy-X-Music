@@ -1,4 +1,16 @@
 from collections import deque
+from config import load_config
+
+# Load the configuration data
+config_data = load_config()
+
+# Access the necessary configuration for the queue system (e.g., Redis URL)
+queue_url = config_data.get('queue_url')
+
+# Example usage: Connecting to a queue system
+print(f"Connecting to queue system at: {queue_url}")
+
+# Queue setup and operations here...
 
 class QueueManager:
     def __init__(self):
