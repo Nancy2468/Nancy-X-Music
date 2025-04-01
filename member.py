@@ -1,6 +1,17 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import load_config
 
+# Load configuration data
+config_data = load_config()
+
+# Retrieve API details from the JSON file
+api_id = config_data.get('api_id')
+api_hash = config_data.get('api_hash')
+bot_token = config_data.get('bot_token')
+
+# Initialize the bot client using values from config.json
+app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def is_admin(client, chat_id, user_id):
     """Check if a user is an admin in a group."""
     chat_member = client.get_chat_member(chat_id, user_id)
