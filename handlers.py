@@ -141,4 +141,9 @@ def nancy(update: Update, context: CallbackContext):
 def queue(update: Update, context: CallbackContext):
     update.message.reply_text("Managing queue...")
 
+def get_songs_from_playlist(group_id, playlist_name):
+    cursor.execute("SELECT song_name, song_url FROM songs WHERE playlist_id = (SELECT id FROM playlists WHERE group_id = ? AND name = ?)",
+                   (group_id, playlist_name))
+    return cursor.fetchall()
+
 # Register handlers in bot.py
