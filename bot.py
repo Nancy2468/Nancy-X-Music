@@ -9,10 +9,23 @@ from database import init_db, add_playlist_db, remove_playlist_db, add_song_db, 
 from members import handle_new_members, handle_member_leave  # Join/leave messages
 from schedulers import schedule_messages  # Auto Good Morning/Night messages
 from config import TOKEN  # Bot token from config file
+from config import load_config
 
 # Logging setup
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Load the configuration data
+config_data = load_config()
+
+# Access the necessary values
+api_key = config_data.get('api_key')
+
+# Now use this API key where needed in your bot logic
+print(f"Bot is using API Key: {api_key}")
+
+# Example of how you might use the api_key in your bot:
+# bot = YourBotLibrary(api_key=api_key)
 
 def start(update: Update, context: CallbackContext):
     """Handles /start command differently in DM and group."""
