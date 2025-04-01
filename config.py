@@ -23,6 +23,7 @@ drive = GoogleDrive(gauth)
 # Bot Settings
 OWNER_ID = int(os.getenv("OWNER_ID", ""))  # Your Telegram user ID
 ADMINS = list(map(int, os.getenv("ADMINS", "").split()))  # List of admin IDs
+ADMINS = []  # Add admin user IDs here
 
 # Music Playback Configuration
 VOICE_CHAT_TIMEOUT = 360  # Auto-stop if no one in voice chat for 6 minutes
