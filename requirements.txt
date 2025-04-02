@@ -10,4 +10,3 @@ git+https://github.com/pyrogram/pyrogram.git
 git+https://github.com/iterative/PyDrive2.git
 git+https://github.com/theskumar/python-dotenv.git
 git+https://github.com/pyrogram/tgcrypto.git
-git+https://github.com/FFmpeg/FFmpeg.git
