@@ -1,6 +1,5 @@
 git+https://github.com/python-telegram-bot/python-telegram-bot.git
 git+https://github.com/dbader/schedule.git
-git+https://github.com/pytgcalls/ntgcalls.git
 git+https://github.com/pytube/pytube.git
 git+https://github.com/googleapis/google-auth-library-python.git
 git+https://github.com/googleapis/google-auth-library-python-oauthlib.git
@@ -10,8 +9,9 @@ git+https://github.com/pyrogram/pyrogram.git
 git+https://github.com/iterative/PyDrive2.git
 git+https://github.com/theskumar/python-dotenv.git
 git+https://github.com/pyrogram/tgcrypto.git
-cmake
-setuptools
-wheel
-cython
-ninja
+git+https://github.com/Kitware/CMake.git
+git+https://github.com/pypa/setuptools.git
+git+https://github.com/pypa/wheel.git
+git+https://github.com/cython/cython.git
+git+https://github.com/ninja-build/ninja.git
+git+https://github.com/pytgcalls/ntgcalls.git
